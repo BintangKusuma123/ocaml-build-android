@@ -27,6 +27,11 @@ jobs:
           dos2unix build.sh
       - name: Build
         run: ./build.sh ${{matrix.arch}}
+      - name: Log
+        if: always()
+        run: |
+          cd ocaml
+          cat config.log
       - uses: actions/upload-artifact@v2
         with:
           name: ocaml-${{matrix.arch}}
