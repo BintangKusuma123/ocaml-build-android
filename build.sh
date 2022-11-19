@@ -11,7 +11,7 @@ case "$1" in
         make clean
         ;;
     armv7-a)
-        export CFLAGS="-m32 -O2"
+        export CFLAGS="-m32 -O2 -std=c17"
         export TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/$HOST_OS
         export TARGET=armv7a-linux-androideabi
         export API=19
@@ -27,7 +27,7 @@ case "$1" in
         make world.opt install
         ;;
     armv8-a)
-        export CFLAGS="-O2"
+        export CFLAGS="-O2 -std=c17"
         export TOOLCHAIN=$NDK/toolchains/llvm/prebuilt/$HOST_OS
         export TARGET=aarch64-linux-android
         export API=21
