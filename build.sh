@@ -2,6 +2,8 @@ echo "compiling for architecture: $1"
 
 NDK=$ANDROID_NDK_HOME
 
+HOST_OS=linux-x86_64
+
 cd ocaml
 
 case "$1" in
