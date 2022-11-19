@@ -1,0 +1,33 @@
+# just a simple workflow that clones repo with library and runs build.sh
+name: Build
+on: [workflow_dispatch]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        arch: [armv7-a, armv8-a]
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup
+        run: |
+          sudo apt update -y
+          sudo apt upgrade -y
+          sudo apt install make -y
+          sudo apt install cmake -y
+          sudo apt install automake -y
+          sudo apt install autoconf -y
+          sudo apt install libtool -y
+          sudo apt install build-essential -y
+          sudo apt install gcc-multilib -y
+          sudo apt install dos2unix -y
+          sudo apt install python -y
+          git clone https://github.com/ocaml/ocaml
+          sudo chmod -R 777 *
+          dos2unix build.sh
+      - name: Build
+        run: ./build.sh ${{matrix.arch}}
+      - uses: actions/upload-artifact@v2
+        with:
+          name: ocaml-${{matrix.arch}}
+          path: ocaml
