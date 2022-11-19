@@ -23,7 +23,7 @@ case "$1" in
         export LD=$TOOLCHAIN/bin/ld
         export RANLIB=$TOOLCHAIN/bin/llvm-ranlib
         export STRIP=$TOOLCHAIN/bin/llvm-strip
-        ./configure --host $TARGET --enable-debugger --enable-instrumented-runtime --enable-installing-source-artifacts --enable-installing-bytecode-programs --enable-flambda --enable-flambda-invariants --enable-cmm-invariants
+        ./configure --host $TARGET --enable-debugger --enable-instrumented-runtime --enable-installing-source-artifacts --enable-installing-bytecode-programs --enable-flambda --enable-flambda-invariants --enable-cmm-invariants --disable-native-compiler=no
         make world.opt install
         ;;
     armv8-a)
