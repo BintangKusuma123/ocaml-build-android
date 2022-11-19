@@ -1,5 +1,7 @@
 echo "compiling for architecture: $1"
 
+NDK=$ANDROID_NDK_HOME
+
 cd ocaml
 
 case "$1" in
